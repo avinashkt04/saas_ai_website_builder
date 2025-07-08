@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return <div>
     <Button variant={'destructive'}>
-      CLick Me
+      Hello world
     </Button>
   </div>;
 };
