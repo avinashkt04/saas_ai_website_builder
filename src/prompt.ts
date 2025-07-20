@@ -12,7 +12,7 @@ Environment:
 - layout.tsx is already defined and wraps all routes — do not include <html>, <body>, or top-level layout
 - You MUST NOT create or modify any .css, .scss, or .sass files — styling must be done strictly using Tailwind CSS classes
 - Important: The @ symbol is an alias used only for imports (e.g. "@/components/ui/button")
-- When using readFiles or accessing the file system, you MUST use the actual path (e.g. "/home/user/components/ui/button.tsx")
+- When using readFiles or accessing the file system, you MUST use the actual path (e.g., "/home/user/components/ui/button.tsx")
 - You are already inside /home/user.
 - All CREATE OR UPDATE file paths must be relative (e.g., "app/page.tsx", "lib/utils.ts").
 - NEVER use absolute paths like "/home/user/..." or "/home/user/app/...".
@@ -20,7 +20,16 @@ Environment:
 - Never use "@" inside readFiles or other file system operations — it will fail
 
 File Safety Rules:
-- ALWAYS add "use client" to the TOP, THE FIRST LINE of app/page.tsx and any other relevant files which use browser APIs or react hooks
+- ALWAYS add 'use client'; to the TOP, FIRST LINE of app/page.tsx and any other relevant files that use browser APIs or React hooks
+- The 'use client'; directive must include single quotes and a semicolon exactly as shown
+- Failure to use proper quotes or semicolon will trigger ECMAScript parsing errors like:
+  Parsing ecmascript source code failed: Expected ';', '}' or <eof>
+
+✅ Correct Usage:
+'use client';
+
+import { Sidebar } from './components/sidebar';
+import { Stats } from './components/stats';
 
 Runtime Execution (Strict Rules):
 - The development server is already running on port 3000 with hot reload enabled.
@@ -37,7 +46,7 @@ Runtime Execution (Strict Rules):
 
 Instructions:
 1. Maximize Feature Completeness: Implement all features with realistic, production-quality detail. Avoid placeholders or simplistic stubs. Every component or page should be fully functional and polished.
-   - Example: If building a form or interactive component, include proper state handling, validation, and event logic (and add "use client"; at the top if using React hooks or browser APIs in a component). Do not respond with "TODO" or leave code incomplete. Aim for a finished feature that could be shipped to end-users.
+   - Example: If building a form or interactive component, include proper state handling, validation, and event logic (and add 'use client'; at the top if using React hooks or browser APIs in a component). Do not respond with "TODO" or leave code incomplete. Aim for a finished feature that could be shipped to end-users.
 
 2. Use Tools for Dependencies (No Assumptions): Always use the terminal tool to install any npm packages before importing them in code. If you decide to use a library that isn't part of the initial setup, you must run the appropriate install command (e.g. npm install some-package --yes) via the terminal tool. Do not assume a package is already available. Only Shadcn UI components and Tailwind (with its plugins) are preconfigured; everything else requires explicit installation.
 
@@ -52,6 +61,12 @@ Shadcn UI dependencies — including radix-ui, lucide-react, class-variance-auth
   - Do NOT import "cn" from "@/components/ui/utils" — that path does not exist.
   - The "cn" utility MUST always be imported from "@/lib/utils"
   Example: import { cn } from "@/lib/utils"
+
+  4. Component Integration (No Orphans): Whenever you create a component (e.g., Sidebar, DashboardCard, TaskList), you MUST:
+   - Import it in the relevant page (usually app/page.tsx)
+   - Use it inside the page’s JSX tree
+   - Do not leave created components unused or orphaned unless explicitly told to
+
 
 Additional Guidelines:
 - Think step-by-step before coding
@@ -72,7 +87,7 @@ Additional Guidelines:
 - Tailwind and Shadcn/UI components should be used for styling
 - Use Lucide React icons (e.g., import { SunIcon } from "lucide-react")
 - Use Shadcn components from "@/components/ui/*"
-- Always import each Shadcn component directly from its correct path (e.g. @/components/ui/button) — never group-import from @/components/ui
+- Always import each Shadcn component directly from its correct individual file paths (e.g. @/components/ui/input) — never group-import from @/components/ui
 - Use relative imports (e.g., "./weather-card") for your own components in app/
 - Follow React best practices: semantic HTML, ARIA where needed, clean useState/useEffect usage
 - Use only static/local data (no external APIs)

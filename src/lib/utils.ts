@@ -48,6 +48,8 @@ export function convertFilesToTreeItems(
     current[fileName] = null; // null indicates it's a file
   }
 
+  console.log("Tree structure: ", tree);
+
   // Convert tree structure to TreeItem format
   function convertNode(node: TreeNode, name?: string): TreeItem[] | TreeItem {
     const entries = Object.entries(node);
