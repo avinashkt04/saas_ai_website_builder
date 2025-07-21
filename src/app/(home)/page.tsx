@@ -9,7 +9,7 @@ const Page = () => {
 
   return (
     <div className="flex flex-col max-w-5xl mx-auto w-full">
-      <section className="space-y-6 py-[16vh]">
+      <section className="space-y-6 py-[16vh] 2xl:pt-32">
         <div className="flex flex-col items-center">
           <Image
             src="/logo.svg"
