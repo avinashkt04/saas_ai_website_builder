@@ -13,7 +13,7 @@ interface UserMessageProps {
 const UserMessage = ({ content }: UserMessageProps) => {
   return (
     <div className="flex justify-end pb-4 pr-2 pl-10">
-      <Card className="rounded-lg bg-slate-200 p-3 shadow-none border-none max-w-[80%] break-words dark:bg-muted">
+      <Card className="rounded-lg bg-muted p-3 shadow-none border-none max-w-[80%] break-words">
         {content}
       </Card>
     </div>
@@ -34,9 +34,9 @@ const FragmentCard = ({
   return (
     <button
       className={cn(
-        "flex items-start text-start gap-2 border rounded-lg bg-slate-200 w-fit p-3 hover:bg-secondary transition-colors dark:bg-muted",
+        "flex items-start text-start gap-2 border rounded-lg w-fit p-3 hover:bg-secondary transition-colors bg-muted",
         isActiveFragment &&
-          "bg-primary dark:bg-white text-primary-foreground border-primary hover:bg-primary"
+          "bg-primary text-primary-foreground border-primary hover:bg-primary"
       )}
       onClick={() => onFragmentClick(fragment)}
     >
