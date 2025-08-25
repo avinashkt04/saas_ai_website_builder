@@ -24,6 +24,8 @@ const FragmentWeb = ({ data }: Props) => {
     }, 2000);
   };
 
+  const secureUrl = data.sandboxUrl?.replace('http://', 'https://') || '';
+
   return (
     <div className="flex flex-col w-full h-full">
       <div className="p-2 border-b bg-sidebar flex items-center gap-x-2">
@@ -61,7 +63,7 @@ const FragmentWeb = ({ data }: Props) => {
         className="h-full w-full"
          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads"
         loading="lazy"
-        src={data.sandboxUrl}
+        src={secureUrl}
       />
     </div>
   );
